@@ -1,0 +1,37 @@
+{ Sample program in TINY language – computes factorial
+},COMMENT
+read,READ
+x,ID
+;,SEMI COLON
+{input an integer },COMMENT
+if,IF
+0,NUM
+<,LESS THAN
+x,ID
+then,THEN
+{ don’t compute if x <= 0 },COMMENT
+fact,ID
+:=,ASSIGN
+1,NUM
+;,SEMI COLON
+repeat,REPEAT
+fact,ID
+:=,ASSIGN
+fact,ID
+*,MULTIPLY
+x,ID
+;,SEMI COLON
+x,ID
+:=,ASSIGN
+x,ID
+-,MINUS
+1,NUM
+until,UNTIL
+x,ID
+=,EQUAL
+0,NUM
+;,SEMI COLON
+write,WRITE
+fact,ID
+{ output factorial of x },COMMENT
+end,END
