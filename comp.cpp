@@ -14,12 +14,25 @@ int main(){
 queue<pair<string,string>> accepted;
 
 unordered_map <string,string> ResWord ;
-ResWord["if"]="IF";ResWord["then"]="THEN";ResWord["else"]="ELSE";ResWord["end"]="END";
-ResWord["repeat"]="REPEAT";ResWord["until"]="UNTIL";ResWord["read"]="READ";ResWord["write"]="WRITE";
+ResWord["if"]="IF";
+ResWord["then"]="THEN";
+ResWord["else"]="ELSE";
+ResWord["end"]="END";
+ResWord["repeat"]="REPEAT";
+ResWord["until"]="UNTIL";
+ResWord["read"]="READ";
+ResWord["write"]="WRITE";
 
 unordered_map <string,string> SpSym ;
-SpSym["+"]="PLUS";SpSym["-"]="MINUS";SpSym["*"]="MULTIPLY";SpSym["/"]="DIVIDED";SpSym["="]="EQUAL";
-SpSym["<"]="LESS THAN";SpSym["("]="OPEN BRACKET";SpSym[")"]="CLOSE BRACKET";SpSym[";"]="SEMI COLON";
+SpSym["+"]="PLUS";
+SpSym["-"]="MINUS";
+SpSym["*"]="MULT";
+SpSym["/"]="DIV";
+SpSym["="]="EQUAL";
+SpSym["<"]="LESSTHAN";
+SpSym["("]="OPENBRACKET";
+SpSym[")"]="CLOSEDBRACKET";
+SpSym[";"]="SEMICOLON";
 
 ifstream ss;
 ofstream oo;
@@ -29,7 +42,7 @@ STATE_type STATE= START;
 STATE_type prevSTATE= START;
 string value,temp;
 char c;
-//for (auto c:ss.read())
+
 while(!ss.eof())
 {
     ss.get(c);
@@ -46,7 +59,7 @@ while(!ss.eof())
     if(STATE==INNUM)
         {
         if(c>='0' && c<='9'){value=value+c;continue;}
-        accepted.push(make_pair(value,"NUM"));value=c;
+        accepted.push(make_pair(value,"NUMBER"));value=c;
         if(SpSym.count(value)){STATE=INSPECIAL;}
         else{value="";STATE= START;continue;}
         }
@@ -59,7 +72,7 @@ while(!ss.eof())
         accepted.push(make_pair(value,ResWord[value]));value="";
         STATE= START;continue;
         }
-        accepted.push(make_pair(value,"ID"));value=c;
+        accepted.push(make_pair(value,"IDENTIFIER"));value=c;
         if(SpSym.count(value))
         {STATE=INSPECIAL;}   
         else {value="";STATE= START;continue;}
