@@ -36,6 +36,9 @@ SpSym[";"]="SEMICOLON";
 
 ifstream ss;
 ofstream oo;
+oo.open("input.txt",ios::app);
+oo<<" ";
+oo.close();
 ss.open("input.txt",ios::in);
 
 STATE_type STATE= START;
